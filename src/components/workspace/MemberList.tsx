@@ -57,7 +57,7 @@ export function MemberList({ workspaceId, currentUserId }: MemberListProps) {
           </TableHeader>
           <TableBody>
             {workspaceMembers.map((member) => (
-              <TableRow key={member.id}>
+              <TableRow key={member.name}>
                 <TableCell>{member.name || "名前なし"}</TableCell>
                 <TableCell>{member.isOwner ? "管理者" : "メンバー"}</TableCell>
                 <TableCell>{formatDate(member.joinedAt)}</TableCell>

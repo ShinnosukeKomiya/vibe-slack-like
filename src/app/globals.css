@@ -2,7 +2,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1D1C1D;
+  --slack-purple: #4A154B;
+  --slack-green: #2BAC76;
+  --slack-border: #dddddd;
+  --slack-hover: #F8F8F8;
+  --slack-sidebar: #19171D;
 }
 
 @theme inline {
@@ -14,13 +19,23 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1A1D21;
+    --foreground: #D1D2D3;
+    --slack-border: #4D4C4D;
+    --slack-hover: #222529;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+.slack-button {
+  @apply bg-[#4A154B] hover:bg-[#3F0E40] text-white transition-colors;
+}
+
+.slack-border {
+  @apply border border-[#dddddd] dark:border-[#4D4C4D];
 }
