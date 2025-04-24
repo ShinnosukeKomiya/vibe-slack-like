@@ -1,0 +1,28 @@
+---
+description: Always follow these implementation rules to ensure code quality, consistency, and alignment with project requirements.
+globs:
+alwaysApply: false
+---
+# 実装手順
+
+新しい実装を開始する際には、以下の手順に従うことが必須です：
+
+## 実装前チェックリスト
+
+1. **要件定義書の確認**
+   - [要件定義書](mdc:docs/requirement.md)を十分に読み込むこと
+   - すべての機能要件と非機能要件を理解していることを確認すること
+   - 進める前に質問や明確にすべき点があれば記録しておくこと
+
+2. **Feature コンポーネントの特定または作成**
+   - 適切な [Feature ディレクトリ](mdc:src/components/features) を見つけること
+   - Feature が存在しない場合は、プロジェクトの命名規則に従って新しく作成すること
+   - Feature の構造がアプリケーションのアーキテクチャに合致していることを確認すること
+3. **実装計画に従う**
+   - [実装計画書](mdc:docs/implementation_plan.md)を参照すること
+   - 実装アプローチが計画のガイドラインに合致していることを確認すること
+   - 計画に記載されているステップバイステップの指示に従うこと
+
+4. **既存コードの参照**
+   - 実装に課題が生じた場合は、類似する既存の Features を参照すること
+   - 一貫性を保ちながら、既存コードを参考にすること

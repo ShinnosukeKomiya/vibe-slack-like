@@ -1,8 +1,3 @@
----
-description: This is a file summarizing the practices for error handling in Next.js ver. 15.
-globs:
-alwaysApply: false
----
 # Next.js 15 Parameter Handling
 
 Next.js 15 now treats page component params as Promises. In client components, you need to handle them as follows:

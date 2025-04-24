@@ -1,0 +1,61 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# 実装計画書作成ルール
+
+機能実装の前に必ず実装計画を立て、段階的かつ構造化された開発を行うために以下の手順に従うこと。
+
+## 実装計画書作成手順
+
+1. **要件定義の確認**
+   - 要件定義書（docs/requirement.md）を詳細に読み込むこと
+   - 実装する機能の範囲と目的を明確に理解すること
+
+2. **既存コンポーネントの調査**
+   - 該当のfeature配下のコンポーネントを詳細に確認すること
+   - 既存コンポーネントの再利用可能性を評価すること
+
+3. **ボトムアップ実装計画の立案**
+   - ui → component → pageの順で開発計画を立てること
+   - 既存UIコンポーネントを優先的に使用すること（shadcnは必須ではない）
+   - 各タスクは1 Pull Request内、各作業項目は1 Commitで実装可能な粒度にすること
+
+4. **成果物の保存**
+   - 作成した実装計画書を `docs/implementation_plan.md` に出力すること
+
+## 実装計画書フォーマット例
+
+```markdown
+# ユーザーログイン機能の実装計画
+
+## 1. 実装概要
+- ユーザーがメールアドレスとパスワードでログインできる機能を実装
+- ログイン成功時はダッシュボードページへリダイレクト
+- ログイン失敗時はエラーメッセージを表示
+
+## 2. タスク一覧
+
+### 2.1 UIコンポーネント開発
+1. [ ] 機能実装/変更：`src/components/ui/input.tsx`の入力バリデーション機能を拡張
+2. [ ] 機能実装/変更：`src/components/ui/button.tsx`にローディング状態を追加
+3. [ ] 機能実装/新規：`src/components/features/auth/login-form.tsx`でログインフォームを実装
+
+### 2.2 認証ロジック実装
+1. [ ] 機能実装/新規：`src/lib/auth/login.ts`でログイン処理関数を実装
+2. [ ] 機能実装/変更：`src/contexts/auth-context.tsx`に認証状態管理を追加
+
+### 2.3 ページ実装
+1. [ ] 機能実装/新規：`src/app/(auth)/login/page.tsx`にログインページを実装
+2. [ ] 機能実装/変更：認証状態に基づくルーティング保護を実装
+
+### 2.4 品質確認
+1. [ ] 品質確認：`npm run lint:fix`で静的解析を実行
+2. [ ] 品質確認：`npm run build`でビルドを実行して問題がないことを確認
+
+## 3. 参考ファイル
+- 既存の認証関連コンポーネント: [src/components/features/auth](mdc:src/components/features/auth)
+- 類似実装: [src/components/features/user](mdc:src/components/features/user)
+```
