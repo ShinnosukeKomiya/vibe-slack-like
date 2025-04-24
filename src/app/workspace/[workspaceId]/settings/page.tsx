@@ -8,6 +8,7 @@ import { MemberList } from "@/components/features/workspace/MemberList";
 import { useWorkspaceStore } from "@/lib/store/workspaceStore";
 import { useMemberStore } from "@/lib/store/memberStore";
 import { generateId, getCurrentDateTime } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export default function WorkspaceSettingsPage({
   params,
@@ -89,6 +90,9 @@ export default function WorkspaceSettingsPage({
         </div>
 
         <InviteLinkGenerator workspaceId={workspaceId} />
+        <Button onClick={() => router.push(`/workspace/${workspaceId}/channels`)}>
+          チャンネル一覧へ
+        </Button>
       </div>
 
       <div className="bg-white dark:bg-gray-900 rounded-md slack-border p-6 mb-6">
