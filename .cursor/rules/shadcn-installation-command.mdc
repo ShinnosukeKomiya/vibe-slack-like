@@ -1,0 +1,14 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Shadcn コンポーネントインストールコマンド
+
+Shadcn UI コンポーネントをインストールする際は、以下のコマンドを使用してください。
+
+```bash
+npx shadcn@latest add <コンポーネント名>
+```
+
+`<コンポーネント名>` はインストールしたい具体的なコンポーネント名に置き換えてください。

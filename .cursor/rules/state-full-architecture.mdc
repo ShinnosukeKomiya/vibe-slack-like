@@ -13,7 +13,6 @@ alwaysApply: false
 
 ### データ管理
 
-- すべてのデータはブラウザのローカルストレージ（`localStorage`/`sessionStorage`）に保存する
 - 状態管理には[Zustand](mdc:lib/store)を使用する
 - サーバーサイドのAPI実装は行わない
 
