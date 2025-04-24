@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { CreateWorkspaceForm } from "@/components/workspace/CreateWorkspaceForm";
+import { CreateWorkspaceForm } from "@/components/features/workspace/CreateWorkspaceForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 

@@ -3,8 +3,8 @@
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { InviteLinkGenerator } from "@/components/workspace/InviteLinkGenerator";
-import { MemberList } from "@/components/workspace/MemberList";
+import { InviteLinkGenerator } from "@/components/features/workspace/InviteLinkGenerator";
+import { MemberList } from "@/components/features/workspace/MemberList";
 import { useWorkspaceStore } from "@/lib/store/workspaceStore";
 import { useMemberStore } from "@/lib/store/memberStore";
 import { generateId, getCurrentDateTime } from "@/lib/utils";
