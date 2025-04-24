@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useChannelStore } from '@/lib/store/channelStore'
 
 export type Workspace = {
   id: string;
@@ -27,6 +28,10 @@ export const useWorkspaceStore = create<WorkspaceState>()(
           workspaces: [...state.workspaces, workspace],
           currentWorkspace: workspace,
         }));
+        // デフォルトチャンネルを作成 (#general, #random)
+        const { addChannel } = useChannelStore.getState()
+        addChannel({ workspaceId: workspace.id, name: 'general', isPublic: true, description: '' })
+        addChannel({ workspaceId: workspace.id, name: 'random', isPublic: true, description: '' })
       },
       setCurrentWorkspace: (workspaceId) => {
         const workspace = get().workspaces.find((w) => w.id === workspaceId) || null;

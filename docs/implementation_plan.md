@@ -13,38 +13,23 @@
 
 #### 2.1 UIコンポーネント開発
 
-1. [ ] 機能実装/新規：チャンネル作成用モーダル/フォームを実装する。
-    - `npx shadcn@latest add textarea switch` を実行し、必要なコンポーネントをインストールする。（ルール参照: [`shadcn-installation-command.mdc`](mdc:.cursor/rules/shadcn-installation-command.mdc)）
-    - `components/features/channels/ChannelCreateForm.tsx` (仮) を作成し、以下の要素を含むフォームを実装する。
-        - チャンネル名入力 (`Input`) - '#' プレフィックスを表示
-        - 公開/非公開フラグ (`Switch`)
-        - 説明入力 (`Textarea`) - 任意
-        - 作成ボタン (`Button`)
-        - キャンセルボタン (`Button`)
-2. [ ] 機能実装/変更：ワークスペース別チャンネルページ (`app/workspace/[workspaceId]/channels/page.tsx`) に、チャンネル作成モーダルを開くトリガーとなるボタン (`Button`) を追加する。
+- [x] 機能実装/新規：チャンネル作成用モーダル/フォームを実装する。
+- [x] 機能実装/変更：ワークスペース別チャンネルページ (`app/workspace/[workspaceId]/channels/page.tsx`) に、チャンネル作成モーダルを開くトリガーとなるボタン (`Button`) を追加する。
 
 #### 2.2 ページ/ルーティング実装
 
-1. [ ] 機能実装/新規：ワークスペースごとのチャンネルを管理するページ (`app/workspace/[workspaceId]/channels/page.tsx`) を作成する。
-    - URL パラメータ (`workspaceId`) を取得し、該当するワークスペースのチャンネル関連機能を表示する。
+- [x] 機能実装/新規：ワークスペースごとのチャンネルを管理するページ (`app/workspace/[workspaceId]/channels/page.tsx`) を作成する。
 
 #### 2.3 データフェッチ/ステート管理
 
-1. [ ] 機能実装/新規：`store/channelStore.ts` にチャンネル作成ロジックを追加する。
-    - 新しいチャンネル情報（`workspaceId` を含む）をストアのチャンネルリストに追加するアクションを実装する。
-    - 入力値のバリデーション
-        - 名前は必須、英数字とハイフン/アンダースコアのみ許可
-        - 名前の重複チェック（同一ワークスペース内）
-    - 作成成功後、モーダルを閉じるなどの後処理を行う。
-2. [ ] 機能実装/新規：ワークスペース作成時にデフォルトチャンネルを作成するロジックを追加する。
-    - `#general`：デフォルトの公開チャンネル（削除・編集不可）
-    - `#random`：デフォルトの公開チャンネル（削除・編集不可）
+- [x] 機能実装/新規：`store/channelStore.ts` にチャンネル作成ロジックを追加する。
+- [x] 機能実装/新規：ワークスペース作成時にデフォルトチャンネルを作成するロジックを追加する。
 
 #### 2.4 バグ修正
 
 - 品質確認
-  - [ ] 静的解析：`npm run lint:fix`
-  - [ ] ビルド：`npm run build`
+  - [x] 静的解析：`npm run lint:fix`
+  - [x] ビルド：`npm run build`
 
 ### FR‑2‑2: チャンネル編集機能
 
@@ -80,27 +65,43 @@
 
 #### 2.1 UIコンポーネント開発
 
-1. [ ] 機能実装/新規：チャンネル一覧表示コンポーネント (`components/features/channels/ChannelList.tsx` (仮)) を作成する。
-    - ストアから取得したチャンネルリストの中から、現在の `workspaceId` に一致するものだけを表示する。
-    - 各チャンネルアイテムには、以下の情報を表示する。
-        - チャンネル名（'#' プレフィックス付き）
-        - 説明（存在する場合）
-        - 公開/非公開ステータス
-    - チャンネルアイテムクリック時の遷移先（チャンネル詳細ページなど）を考慮する。
-2. [ ] 機能実装/新規：チャンネル検索用入力フィールド (`Input`) をワークスペース別チャンネルページ (`app/workspace/[workspaceId]/channels/page.tsx` (仮)) に追加する。
+- [x] 機能実装/新規：チャンネル一覧表示コンポーネント (`components/features/channels/ChannelList.tsx`) を作成する。
+- [x] 機能実装/新規：チャンネル検索用入力フィールド (`Input`) をワークスペース別チャンネルページ (`src/app/workspace/[workspaceId]/channels/page.tsx`) に追加する。
 
 #### 2.2 ページ/ルーティング実装
 
-1. [ ] 機能実装/変更：ワークスペース別チャンネルページ (`app/workspace/[workspaceId]/channels/page.tsx` (仮)) に `ChannelList.tsx` と検索フィールドを配置する。
+- [x] 機能実装/変更：ワークスペース別チャンネルページ (`src/app/workspace/[workspaceId]/channels/page.tsx`) に `ChannelList` と検索フィールドを配置する。
 
 #### 2.3 データフェッチ/ステート管理
 
-1. [ ] 機能実装/新規：`stores/channels.ts` (仮) に指定された `workspaceId` に属するチャンネルリストを取得するゲッターを追加する。
-    - 公開チャンネルと、自身が参加している非公開チャンネルを結合して返す。
-2. [ ] 機能実装/新規：`stores/channels.ts` (仮) または `ChannelList.tsx` / ページコンポーネントに、入力されたキーワードでチャンネルリストをフィルタリングするロジックを実装する。
-    - チャンネル名または説明にキーワードが含まれるチャンネルを抽出する。（クライアントサイドフィルタリング）
+- [x] 機能実装/新規：`src/lib/store/channelStore.ts` に指定された `workspaceId` に属するチャンネルリストを取得するゲッターを追加する。
+- [x] 機能実装/新規：入力キーワードでチャンネルリストをフィルタリングするロジックを実装する。
 
 #### 2.4 バグ修正
+
+- 品質確認
+  - [ ] 静的解析：`npm run lint:fix`
+  - [ ] ビルド：`npm run build`
+
+### FR-2-4: チャンネルメッセージ表示機能
+
+#### 2.1 UIコンポーネント開発
+
+- [ ] 機能実装/新規：メッセージ表示エリアコンポーネント (`components/features/channels/ChannelMessageArea.tsx`) を作成。選択されたチャンネルのメッセージリストを表示し、選択なしの場合は案内文を提示。
+
+#### 2.2 ページ/レイアウト変更
+
+- [ ] 機能実装/変更：ワークスペースチャンネルページを2ペインレイアウトに変更し、左に `ChannelList`、右に `ChannelMessageArea` コンポーネントを配置。
+
+#### 2.3 状態管理
+
+- [ ] 機能実装/新規：`useChannelStore` に `selectedChannelId` と `setSelectedChannel` アクションを追加し、選択状態を管理。
+
+#### 2.4 データ表示
+
+- [ ] 機能実装/新規：仮のメッセージデータを用意し、選択されたチャンネルのメッセージを表示する。
+
+#### 2.5 バグ修正
 
 - 品質確認
   - [ ] 静的解析：`npm run lint:fix`
